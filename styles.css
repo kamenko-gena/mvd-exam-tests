@@ -1,0 +1,50 @@
+button {
+  margin: auto;
+  padding: 10px;
+  border-radius: 5px;
+  width: fit-content;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+
+.main-title {
+  margin-left: 2em;
+}
+
+#question-number {
+  font-size: small;
+
+}
+
+#next {
+  margin-top: 2em;
+}
+.question {
+  margin-bottom: 10px;
+}
+.quiz-container {
+  margin-left: 2em;
+  margin-top: 2em;
+}
+#quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#results {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.correct {
+  background-color: green;
+  color: white;
+}
+
+.incorrect {
+  background-color: red;
+  color: white;
+}
