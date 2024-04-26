@@ -59,8 +59,16 @@ button:hover {
   background-color: green;
   color: white;
 }
+.correct:hover {
+  transform: none;
+  cursor: default;
+}
 
 .incorrect {
   background-color: red;
   color: white;
+}
+.incorrect:hover {
+  transform: none;
+  cursor: default;
 }

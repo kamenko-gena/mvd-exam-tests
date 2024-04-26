@@ -332,6 +332,8 @@ quizContainer.addEventListener('click', function(event) {
     answerButtons.forEach(button => {
       if (button !== clickedButton) {
         button.disabled = true;
+        button.style.transform = 'none';
+        button.style.cursor = 'default';
       }
     });
   }
