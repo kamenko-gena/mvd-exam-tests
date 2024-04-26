@@ -1,6 +1,12 @@
 *{
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.logo-img {
+  width: 5em;
+  height: 5em;
+}
+
 button {
   margin: auto;
   padding: 10px;
@@ -11,11 +17,12 @@ button {
   margin-bottom: 1em;
 }
 
-
 .main-title {
+  display: flex;
   margin-left: 2em;
   margin-right: 2em;
   font-size: small;
+  justify-content: space-between;
 }
 
 #question-number {
@@ -31,6 +38,7 @@ button {
 .quiz-container {
   margin: 2em;
 }
+
 #quiz {
   display: flex;
   flex-direction: column;
