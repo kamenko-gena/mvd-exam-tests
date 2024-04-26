@@ -184,7 +184,7 @@ function showResults() {
     resultsContainer.innerHTML = '<div style="color: green;">Правильно!</div>';
   } else {
     selectedButton.classList.add('incorrect');
-    resultsContainer.innerHTML = '<div style="color: red;">Неправильно!</div>';
+    resultsContainer.innerHTML = `<div style="color: red;">Неправильно!</div><div style="color: red; font-size: small">${currentQuestionData.description}</div>`;
   }
 }
 
