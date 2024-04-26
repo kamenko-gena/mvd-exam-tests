@@ -152,7 +152,7 @@ function buildQuiz() {
   answers.sort(() => Math.random() - 0.5);
 
   output.push(
-    `<div class="question" style="font-size: x-large; font-weight: 600; text-align: center"> ${currentQuestionData.question} </div>`
+    `<div class="question" style="font-size: large; font-weight: 600; text-align: center"> ${currentQuestionData.question} </div>`
   );
   
   answers.forEach(([letter, answerText]) => {
