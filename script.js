@@ -158,7 +158,7 @@ function buildQuiz() {
   answers.forEach(([letter, answerText]) => {
     const isCorrect = letter === currentQuestionData.correctAnswer;
     output.push(
-      `<button class="answer-button" style="max-width: 50em; text-align: center" data-letter="${letter}" ${currentQuestionData.userAnswer ? 'disabled' : ''}>
+      `<button class="answer-button" style="max-width: 50em; text-align: center; font-size: initial" data-letter="${letter}" ${currentQuestionData.userAnswer ? 'disabled' : ''}>
         ${answerText}
       </button>`
     );
