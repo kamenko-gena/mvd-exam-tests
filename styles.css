@@ -21,6 +21,15 @@ button:hover {
   transform: scale(1.05);
 }
 
+#exam, #training {
+  font-size: larger;
+}
+
+.main-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
 .main-title {
   display: flex;
   margin-left: 2em;

@@ -217,16 +217,53 @@ const quizData = [
   }
 ];
 
+let initialQuizData = quizData.slice();
+
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const questionNumber = document.getElementById('question-number')
 const nextButton = document.getElementById('next');
 const restartButton = document.getElementById('restart');
+const examButton = document.getElementById('exam');
+const trainingButton = document.getElementById('training');
 
 let currentQuestion = 0;
 let numCorrect = 0;
-
+let testType = '';
 quizData.sort(() => Math.random() - 0.5);
+
+
+
+examButton.addEventListener('click', startExam);
+trainingButton.addEventListener('click', startTraining);
+
+
+function startExam() {
+  testType = "Exam";
+  const examQuestions = quizData.slice(0, 10);
+  setQuizData(examQuestions);
+  examButton.style.display = 'none';
+  trainingButton.style.display = 'none';
+  nextButton.style.display = 'inline-block';
+  restartQuiz();
+  buildQuiz()
+}
+
+function setQuizData(data) {
+  quizData.length = 0;
+  quizData.push(...data);
+}
+
+function startTraining() {
+  testType = "Training";
+  setQuizData([...initialQuizData]);
+  examButton.style.display = 'none';
+  trainingButton.style.display = 'none';
+  nextButton.style.display = 'inline-block';
+  restartQuiz()
+  buildQuiz()
+}
+
 
 function buildQuiz() {
   const output = [];
@@ -276,8 +313,20 @@ function nextQuestion() {
   const allAnswered = quizData.every(question => question.userAnswer !== null);
 
   if (allAnswered) {
-    quizContainer.innerHTML = '<h3>Тест завершен!</h3>';
-    quizContainer.innerHTML += `<h4>Вы ответили правильно на ${numCorrect} из ${quizData.length} вопросов.</h4>`;
+    if (testType == 'Exam') {
+      if (quizData.length - numCorrect <= 2){
+        quizContainer.innerHTML = '<h2 style="color: green; font-size: 2em">Экзамен сдан!</h2>';
+        quizContainer.innerHTML += `<h4>Вы ответили правильно на ${numCorrect} из ${quizData.length} вопросов.</h4>`;
+      } else {
+        quizContainer.innerHTML = '<h3 style="color: red; font-size: 2em">Экзамен не сдан!</h3>';
+        quizContainer.innerHTML += `<h4>Вы ответили правильно на ${numCorrect} из ${quizData.length} вопросов.</h4>`;
+      }
+      
+    } else {
+      quizContainer.innerHTML = '<h3>Тест завершен!</h3>';
+      quizContainer.innerHTML += `<h4>Вы ответили правильно на ${numCorrect} из ${quizData.length} вопросов.</h4>`;
+    }
+
     resultsContainer.innerHTML = ' ';
     nextButton.style.display = 'none';
     restartButton.style.display = 'block';
@@ -307,18 +356,23 @@ function restartQuiz() {
   quizData.forEach(question => {
     question.userAnswer = null;
   });
-  buildQuiz();
   resultsContainer.innerHTML = '';
   nextButton.style.display = 'block';
   restartButton.style.display = 'none';
 }
 
-restartQuiz()
 
-buildQuiz();
 
 nextButton.addEventListener('click', nextQuestion);
-restartButton.addEventListener('click', restartQuiz);
+
+restartButton.addEventListener('click', function() {
+  examButton.style.display = 'inline-block';
+  trainingButton.style.display = 'inline-block';
+  nextButton.style.display = 'none';
+  restartButton.style.display = 'none';
+  questionNumber.innerHTML = '';
+  quizContainer.innerHTML = '';
+});
 
 quizContainer.addEventListener('click', function(event) {
   const clickedButton = event.target.closest('.answer-button');
