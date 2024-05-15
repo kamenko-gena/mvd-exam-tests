@@ -1,4 +1,4 @@
-const quizData = [
+let mvdData = [
   {
     question: "С какой периодичностью проводится техническое обслуживание в составе и объеме регламента №1 ?",
     answers: {
@@ -217,8 +217,149 @@ const quizData = [
   }
 ];
 
-let initialQuizData = quizData.slice();
 
+
+
+let gazpromData = [
+  {
+    question: "ВОПРОС 1",
+    answers: {
+      a: "1",
+      b: "2",
+      c: "3",
+      d: "4"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 2",
+    answers: {
+      a: "a",
+      b: "b",
+      c: "c",
+      d: "оd"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 3",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 4",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 5",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 6",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 7",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 8",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 9",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 10",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  },
+  {
+    question: "ВОПРОСЫ 11",
+    answers: {
+      a: "11",
+      b: "22",
+      c: "33",
+      d: "44"
+    },
+    description: "п.8 ТКП 490-2013",
+    correctAnswer: "d",
+    userAnswer: null
+  }
+];
+
+
+
+const mvdTestsButton = document.getElementById('mvd-tests');
+const gazpromTestsButton = document.getElementById('gazprom-tests');
+const title = document.getElementById('title');
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const questionNumber = document.getElementById('question-number')
@@ -227,15 +368,42 @@ const restartButton = document.getElementById('restart');
 const examButton = document.getElementById('exam');
 const trainingButton = document.getElementById('training');
 
+
 let currentQuestion = 0;
 let numCorrect = 0;
 let testType = '';
+let quizData = mvdData.slice();
+let initialQuizData = quizData.slice();
 quizData.sort(() => Math.random() - 0.5);
 
 
 
+mvdTestsButton.addEventListener('click', startMvdTests);
+gazpromTestsButton.addEventListener('click', startGazpromTests);
 examButton.addEventListener('click', startExam);
 trainingButton.addEventListener('click', startTraining);
+
+
+function startMvdTests() {
+  quizData = mvdData.slice();
+  initialQuizData = quizData.slice();
+  mvdTestsButton.style.display = 'none';
+  gazpromTestsButton.style.display = 'none';
+  examButton.style.display = 'inline-block';
+  trainingButton.style.display = 'inline-block';
+  title.innerHTML = 'Проектирование, монтаж, наладка, ТО ИТСО<br>Экзамен МВД</br>';
+}
+
+function startGazpromTests() {
+  quizData = gazpromData.slice();
+  initialQuizData = quizData.slice();
+  mvdTestsButton.style.display = 'none';
+  gazpromTestsButton.style.display = 'none';
+  examButton.style.display = 'inline-block';
+  trainingButton.style.display = 'inline-block';
+  title.innerHTML = 'Проектирование, монтаж, наладка, ТО ИТСО<br>Техучеба специалистов по ТО ИТСО</br>';
+}
+
 
 
 function startExam() {
@@ -366,12 +534,15 @@ function restartQuiz() {
 nextButton.addEventListener('click', nextQuestion);
 
 restartButton.addEventListener('click', function() {
-  examButton.style.display = 'inline-block';
-  trainingButton.style.display = 'inline-block';
+  mvdTestsButton.style.display = 'inline-block';
+  gazpromTestsButton.style.display = 'inline-block';
+  examButton.style.display = 'none';
+  trainingButton.style.display = 'none';
   nextButton.style.display = 'none';
   restartButton.style.display = 'none';
   questionNumber.innerHTML = '';
   quizContainer.innerHTML = '';
+  title.innerHTML = 'Проверка знаний специалистов по ТО ИТСО'
 });
 
 quizContainer.addEventListener('click', function(event) {
