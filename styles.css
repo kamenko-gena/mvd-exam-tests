@@ -81,3 +81,10 @@ button:hover {
   transform: none;
   cursor: default;
 }
+footer {
+  position: fixed;
+  bottom: 0.5em;
+  right: 2em;
+  font-size: small;
+  text-align: right;
+}
