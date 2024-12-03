@@ -17,6 +17,7 @@ button {
   margin-bottom: 1em;
   transition: all 0.2s;
 }
+
 button:hover {
   transform: scale(1.05);
 }
@@ -45,9 +46,11 @@ button:hover {
 #next {
   margin-top: 2em;
 }
+
 .question {
   margin-bottom: 2em;
 }
+
 .quiz-container {
   margin: 2em;
 }
@@ -68,6 +71,7 @@ button:hover {
   background-color: green;
   color: white;
 }
+
 .correct:hover {
   transform: none;
   cursor: default;
@@ -77,10 +81,29 @@ button:hover {
   background-color: red;
   color: white;
 }
+
 .incorrect:hover {
   transform: none;
   cursor: default;
 }
+
+#modal {
+  border-radius: 1em;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  width: 100%;
+  height: 100%;
+  background: rgba(172, 172, 172);
+  justify-content: center;
+}
+
+#modal-button {
+  margin: 0;
+}
+
 footer {
   position: fixed;
   bottom: 0.5em;
