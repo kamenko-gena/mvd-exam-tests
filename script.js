@@ -1,5 +1,17 @@
 let mvdData = [
   {
+    question: "При помощи чего крепятся видеокамеры с техническими средствами наведения к площадкам, стойкам, мачтам?",
+    answers: {
+      a: "саморезами и шурупами",
+      b: "болтами и гайками, с обязательной прокладкой шайб",
+      c: "при помощи клея, с обязательным обезжириванием поверхности",
+      d: "при помощи дюбель-гвоздей или заклепок"
+    },
+    description: "п.6.5 ТКП 664-2021",
+    correctAnswer: "b",
+    userAnswer: null
+  },
+  {
     question: "Сколько пикселей на метр должно быть в ТСВ для обнаружения, в том числе распознования событий?",
     answers: {
       a: "не менее 250",
@@ -363,9 +375,6 @@ let mvdData = [
     userAnswer: null
   }
 ];
-
-
-
 
 let gazpromData = [
   {
@@ -790,8 +799,6 @@ let gazpromData = [
   }
 ];
 
-
-
 const mvdTestsButton = document.getElementById('mvd-tests');
 const gazpromTestsButton = document.getElementById('gazprom-tests');
 const title = document.getElementById('title');
@@ -802,7 +809,8 @@ const nextButton = document.getElementById('next');
 const restartButton = document.getElementById('restart');
 const examButton = document.getElementById('exam');
 const trainingButton = document.getElementById('training');
-
+const modal = document.getElementById("modal");
+const modalButton = document.getElementById("modal-button");
 
 let currentQuestion = 0;
 let numCorrect = 0;
@@ -811,12 +819,11 @@ let quizData = mvdData.slice();
 let initialQuizData = quizData.slice();
 quizData.sort(() => Math.random() - 0.5);
 
-
-
 mvdTestsButton.addEventListener('click', startMvdTests);
 gazpromTestsButton.addEventListener('click', startGazpromTests);
 examButton.addEventListener('click', startExam);
 trainingButton.addEventListener('click', startTraining);
+modalButton.addEventListener("click", closeModal);
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -825,6 +832,9 @@ function shuffle(array) {
   }
 }
 
+function closeModal() {
+  modal.style.display = "none";
+}
 
 function startMvdTests() {
   quizData = mvdData.slice();
@@ -851,8 +861,9 @@ function startGazpromTests() {
 }
 
 
-
 function startExam() {
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
   testType = "Exam";
   const examQuestions = quizData.slice(0, 10);
   setQuizData(examQuestions);
@@ -877,7 +888,6 @@ function startTraining() {
   restartQuiz()
   buildQuiz()
 }
-
 
 function buildQuiz() {
   const output = [];
@@ -974,8 +984,6 @@ function restartQuiz() {
   nextButton.style.display = 'block';
   restartButton.style.display = 'none';
 }
-
-
 
 nextButton.addEventListener('click', nextQuestion);
 
