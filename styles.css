@@ -26,6 +26,10 @@ button:hover {
   font-size: larger;
 }
 
+#exam, #training, #next, #restart {
+  display: none;
+}
+
 .main-buttons {
   display: flex;
   flex-direction: column;
