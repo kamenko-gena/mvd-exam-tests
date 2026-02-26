@@ -427,6 +427,30 @@ let mvdData = [
     correctAnswer: "d",
     userAnswer: null,
   },
+  {
+    question: "При каком уровне шума в помещении не допускается устанавливать ультразвуковые извещатели?",
+    answers: {
+      a: "20 дБ",
+      b: "40 дБ",
+      c: "50 дБ",
+      d: "60 дБ",
+    },
+    description: "п.7.2.6 СН 3.02.19-2025 ",
+    correctAnswer: "d",
+    userAnswer: null,
+  },
+  {
+    question: "Сколько рубежей должно быть в системе охранной сигнализации банкомата?",
+    answers: {
+      a: "1 рубеж",
+      b: "2 рубежа",
+      c: "3 рубежа",
+      d: "любой вариант ответа",
+    },
+    description: "п.11.1.1 СН 3.02.19-2025",
+    correctAnswer: "c",
+    userAnswer: null,
+  },
 ];
 
 let gazpromData = [
